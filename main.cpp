@@ -3,14 +3,43 @@
 
 #define seconds *1000000
 
-int main() {
+void updateTime()
+{
+    std:: cout << "Current time: \n";
+    system("date");
+    usleep(1 seconds);
+    system("clear");
+}
+
+int main(int argc, char* argv[]) {
     
     system("clear");
-    while (true)
+
+    bool infinite = false;
+    int duration;
+
+    if (argc > 1)
     {
-        std:: cout << "Current time: \n";
-        system("date");
-        usleep(1 seconds);
-        system("clear");
+        duration = atoi(argv[1]);
     }
+    else
+    {
+        infinite = true;
+    }
+     
+    if (infinite)
+    {
+        while (true)
+        {
+            updateTime();
+        }
+    }
+    else
+    {
+        for (int i = 0; i < duration; i++)
+        {
+            updateTime();
+        }
+    }
+    
 }
